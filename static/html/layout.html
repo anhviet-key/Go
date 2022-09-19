@@ -1,0 +1,123 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="main--title">todos</div>
+      <div class="main--card">
+        <div class="main--card--ip">
+          <form
+            action="/api/todo"
+            method="POST"
+            id="submitForm"
+            onsubmit="return false"
+          >
+            <input
+              type="text"
+              name="todoInput"
+              placeholder="What needs to be done?"
+              autocomplete="off"
+              id="input"
+              maxlength="47"
+            />
+            <i class="fa-solid fa-chevron-right"></i>
+          </form>
+        </div>
+        <div class="main--card--ct">
+          <ul>
+            {{range .}} {{if .Status}}
+            <li class="list">
+              <div class="circle" data="{{.ID}}">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div class="txt">
+                {{.Title}}
+                <input
+                  type="text"
+                  id="formEdit"
+                  class="formEdit block"
+                  placeholder="..."
+                  autocomplete="off"
+                  maxlength="47"
+                />
+              </div>
+              <div class="option">
+                <span data="{{.ID}}" class="linkEdit"
+                  ><div class="btn editItem">
+                    <i class="fa-regular fa-pen-to-square"></i></div
+                ></span>
+                <span data="{{.ID}}" class="linkDel"
+                  ><div class="btn deleItem">
+                    <i class="fa-solid fa-trash-can"></i></div
+                ></span>
+              </div>
+            </li>
+            {{else}}
+            <li class="list">
+              <div class="circle active" data="{{.ID}}">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div class="txt">
+                {{.Title}}
+                <input
+                  type="text"
+                  id="formEdit"
+                  class="formEdit block"
+                  placeholder="..."
+                  autocomplete="off"
+                  maxlength="47"
+                />
+              </div>
+              <div class="option">
+                <span data="{{.ID}}" class="linkEdit"
+                  ><div class="btn editItem">
+                    <i class="fa-regular fa-pen-to-square"></i></div
+                ></span>
+                <span data="{{.ID}}" class="linkDel"
+                  ><div class="btn deleItem">
+                    <i class="fa-solid fa-trash-can"></i></div
+                ></span>
+              </div>
+            </li>
+            {{end}} {{end}}
+          </ul>
+        </div>
+        <div class="main--card--bt">
+          <div class="left">+ item</div>
+          <div class="center">
+            <span class="active-btn">All</span>
+            <span class="">Active</span>
+            <span class="">Completed</span>
+          </div>
+          <div class="right">Clear Completed</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    async
+    defer
+    type="text/javascript"
+    src="static/javascript/javascript.js"
+  ></script>
+</html>
