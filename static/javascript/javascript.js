@@ -4,7 +4,10 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const $$$ = document.getElementById.bind(document);
 const url = "http://localhost:8080/api/todo/";
+var bool = true;
+
 const app = {
+  bool: true,
   active: function () {
     $$(".circle").forEach(function (e) {
       e.addEventListener("click", function () {
@@ -45,8 +48,6 @@ const app = {
           .querySelector(".formEdit")
           .classList.toggle("block");
         const id = e.getAttribute("data");
-        const bool = true;
-
         const context = e.parentNode.parentNode.querySelector(".formEdit");
         context.addEventListener("keypress", (even) => {
           if (even.key == "Enter") {
@@ -64,10 +65,14 @@ const app = {
                   "Content-Type": "application/json",
                 },
               };
-              fetch(url + id, options).then(function (response) {
-                response.json();
-                location.reload();
-              });
+              fetch(url + id, options)
+                .then(function (response) {
+                  response.json();
+                  location.reload();
+                })
+                .catch(function (error) {
+                  alert("error");
+                });
               return;
             }
           }
@@ -91,10 +96,14 @@ const app = {
             "Content-Type": "application/json",
           },
         };
-        fetch(url + id, options).then(function (response) {
-          response.json();
-          location.reload();
-        });
+        fetch(url + id, options)
+          .then(function (response) {
+            response.json();
+            location.reload();
+          })
+          .catch(function (error) {
+            alert("error");
+          });
         return;
       });
     });
