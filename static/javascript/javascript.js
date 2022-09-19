@@ -4,7 +4,6 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const $$$ = document.getElementById.bind(document);
 const url = "http://localhost:8080/api/todo/";
-var bool = true;
 
 const app = {
   bool: true,
