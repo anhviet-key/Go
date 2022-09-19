@@ -4,7 +4,7 @@ const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const $$$ = document.getElementById.bind(document);
 const url = "http://localhost:8080/api/todo/";
-const bool = true;
+
 const app = {
   active: function () {
     $$(".circle").forEach(function (e) {
@@ -42,6 +42,7 @@ const app = {
   },
   update: function () {
     $$(".linkEdit").forEach(function (e) {
+      const bool = true;
       e.addEventListener("click", function (v) {
         e.parentNode.parentNode
           .querySelector(".formEdit")
