@@ -6,7 +6,6 @@ const $$$ = document.getElementById.bind(document);
 const url = "http://localhost:8080/api/todo/";
 const bool = true;
 const app = {
-  bool: true,
   active: function () {
     $$(".circle").forEach(function (e) {
       e.addEventListener("click", function () {
@@ -25,6 +24,7 @@ const app = {
   },
   delete: function () {
     $$(".linkDel").forEach(function (e) {
+      const bool = true;
       e.addEventListener("click", function (v) {
         const id = e.getAttribute("data");
         var options = {
